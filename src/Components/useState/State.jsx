@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import './State.css'
+
+function indexFunction () {
+  console.log("The Index state is ready to use")
+  return 0
+}
 
 function State() {
 
-  useEffect(() => {
-    console.log('component did mount')
-
-    return function cleanup(){
-      // clean up the effect
-      console.log("cleanup")
-    }
-  }, [])
-
-  const [count, setCount] = useState(0)
+  // with the arrow function:
+  const [count, setCount] = useState(() => {
+    console.log("First counter created.")
+    return 0
+  })
   const [massage, setMassage] = useState('')
   const [text, setText] = useState('')
-  const [index, setIndex] = useState(0)
+  // with the common function:
+  const [index, setIndex] = useState(indexFunction())
 
   const changeMassage = (e) => {
     setMassage(e.target.value)
